@@ -16,6 +16,8 @@ public class AlternativeStructures {
         checkOddNumber(4);
         checkOddNumber(-5);
         checkOddNumber(0);
+        System.out.println("The salary is: "+ getSalary());
+        weekdays(3);
     }
 
     //verificare numar mai mare decat 5
@@ -38,7 +40,7 @@ public class AlternativeStructures {
             } else {
                 System.out.println(number + " is odd positive");
             }
-        } else if (number < 0){
+        } else if (number < 0) {
             if (number % 2 == 0) {
                 System.out.println(number + " is even negative");
             } else {
@@ -46,6 +48,43 @@ public class AlternativeStructures {
             }
         } else {
             System.out.println(number + " is equal to zero");
+        }
+    }
+
+    //return methods
+    public Integer getSalary() {
+        Integer salary = 60000;
+        return salary;
+    }
+
+
+    //switch case example
+    //If se bazeaza pe CONDITIE, switch se bazeaza pe VALOARE
+    public void weekdays (Integer day){
+        switch (day){
+            case 1:
+                System.out.println("today is Monday");
+                break;
+            case 2:
+                System.out.println("today is Tuesday");
+                break;
+            case 3:
+                System.out.println("today is Wednesday");
+                break;
+            case 4:
+                System.out.println("today is Thursday");
+                break;
+            case 5:
+                System.out.println("today is Friday");
+                break;
+            case 6:
+                System.out.println("today is Saturday");
+                break;
+            case 7:
+                System.out.println("today is Sunday");
+                break;
+            default:
+                System.out.println("Value out of range");
         }
     }
 }
