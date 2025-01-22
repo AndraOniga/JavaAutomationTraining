@@ -14,7 +14,6 @@ public class Double {
         System.out.printf("The volume of the cylinder is: %.2f\n", volume); //%- beginning of a format specifier, .2- round to 2 decimal, f- floating point number
 
         System.out.println("\nExercise 2: Convert Fahrenheit to Celsius");
-        System.out.println("\nExercise 2: Convert Fahrenheit to Celsius");
         System.out.print("Enter Fahrenheit value: ");
         double fahrenheit = scanner.nextInt();
         double celsius = ((fahrenheit - 32) * 5) / 9;
@@ -26,7 +25,7 @@ public class Double {
         System.out.println("Enter the length of the other side: ");
         double secondSide = scanner.nextInt();
         double hypotenuse = Math.sqrt(Math.pow(firstSide, 2) + Math.pow(secondSide, 2));
-        System.out.println("The ypotenuse of a right- angled triangle with one side of " + firstSide + " and the other side of " + secondSide + " is " + String.format("%.2f", hypotenuse));
+        System.out.println("The hypotenuse of a right- angled triangle with one side of " + firstSide + " and the other side of " + secondSide + " is " + String.format("%.2f", hypotenuse));
         scanner.close();
     }
 }
