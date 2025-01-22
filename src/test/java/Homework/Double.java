@@ -25,7 +25,7 @@ public class Double {
         System.out.println("Enter the length of the other side: ");
         double secondSide = scanner.nextInt();
         double hypotenuse = Math.sqrt(Math.pow(firstSide, 2) + Math.pow(secondSide, 2));
-        System.out.println("The hypotenuse of a right- angled triangle with one side of " + firstSide + " and the other side of " + secondSide + " is " + String.format("%.2f", hypotenuse));
+        System.out.println("The hypotenuse of a right- angled triangleeee with one side of " + firstSide + " and the other side of " + secondSide + " is " + String.format("%.2f", hypotenuse));
         scanner.close();
     }
 }
