@@ -32,27 +32,24 @@ public class HomeworkWebElements {
     }
 
     @Test
-    public void airBnbTest(){
+    public void airBnbTest() {
         driver = new ChromeDriver();
         driver.get("https://www.airbnb.ie/");
         driver.manage().window().maximize();
-
-        WebElement menuButton = driver.findElement(By.xpath("//button[@data-testid='cypress-headernav-profile']"));
-        menuButton.click();
-
-
-        WebElement dropdown = driver.findElement(By.xpath("dropdown-id"));
-        WebElement option = driver.findElement(By.xpath("//li[text()='Option 1']"));
-
-        Actions actions = new Actions(driver);
-        actions.moveToElement(dropdown).pause(1).moveToElement(option).click().perform();
-
-
-//        String expectedUrl = "https://www.airbnb.ie/giftcards";
-//        String actualUrl = driver.getCurrentUrl();
-//        Assert.assertEquals(actualUrl, expectedUrl);
-
+        chooseFromMenu("Gift cards", "Airbnb gift cards");
     }
+
+    public void chooseFromMenu(String subMenuChoice, String expectedPageTitle){
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            WebElement menuButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@data-testid='cypress-headernav-profile']")));
+            menuButton.click();
+            WebElement subMenuChoiceElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                    By.xpath("//div[contains(text(), '" + subMenuChoice+ "')]")));
+            subMenuChoiceElement.click();
+            WebElement pageHeader =driver.findElement(By.xpath("//h1[@data-element-name='title']"));
+            Assert.assertEquals(pageHeader.getText(), expectedPageTitle);
+    }
+
 
     @Test
     public void barnesAndNobles(){
@@ -62,19 +59,9 @@ public class HomeworkWebElements {
         clickOnMenu("Nonfiction", "Humor", "Comedy & Humor Books");
     }
 
-    public void clickOnMenu2(String menuOption, String subMenuOption){
-        WebElement menuElement = driver.findElement(By.xpath("//div[@id='navbarSupportedContent']/div/ul/li[a[contains(text(), '"+menuOption+"')]]"));
-        Actions actions = new Actions(driver);
-        actions.moveToElement(menuElement).perform();
-        WebElement subMenuElement = driver.findElement(By.xpath("//div[@id='navbarSupportedContent']/div/ul/li[a[contains(text(), '"+menuOption+"')]]//div//dd[a[contains(text(),  '"+subMenuOption+"')]]"));
-        subMenuElement.click();
-    }
-
     public void clickOnMenu(String menuOption, String subMenuOption, String expectedPageTitle) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         Actions actions = new Actions(driver);
-
-        // Locate the main menu and hover over it
         WebElement menuElement = driver.findElement(By.xpath("//div[@id='navbarSupportedContent']/div/ul/li[a[contains(text(), '" + menuOption + "')]]"));
         actions.moveToElement(menuElement).perform();
         WebElement subMenuElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
